@@ -6,16 +6,13 @@
 .title,
 .container,
 .upcoming-launch,
-.trailer,
-.omdb,
 .left-column,
 .right-column,
-.timer-countdown,
 .small-container,
 .timer-countdown,
 .mission-info,
 .map,
-.gimphy-contianer {
+.giphy-contianer {
   display: flex;
 }
 .space-header,

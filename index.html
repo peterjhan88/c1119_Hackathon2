@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,33 +12,36 @@
   <script src="giphy.js"></script>
   <script src="maps.js"></script>
   <script src="main.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfM2SL2HiEkMtyxdv01MNlU1oTNcvc9qM" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfM2SL2HiEkMtyxdv01MNlU1oTNcvc9qM" async
+    defer></script>
   <title>SPACE-X!!!!</title>
 </head>
+
 <body>
-<header>
-  <div class="space-header">
-    <div class="title">Space X</div>
-  </div>
-</header>
-<main>
-  <div class="container">
-    <div class="left-column">
-      <div class="upcoming-launch">
-        <button id="test-btn">show me the map</button>
+  <header>
+    <div class="space-header bg-rebeccapurple">
+      <div class="title">Space X</div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="left-column">
+        <div class="upcoming-launch bg-red">
+          <button id="test-btn">show me the map</button>
+        </div>
+      </div>
+      <div class="right-column">
+        <div class="small-container bg-chartreuse">
+          <div class="timer-countdown bg-violet"></div>
+          <div class="mission-info bg-yellow "></div>
+        </div>
+        <div class="small-container">
+          <div class="map-container bg-blue" id="map"></div>
+          <div class="giphy-container bg-violet"></div>
+        </div>
       </div>
     </div>
-    <div class="right-column">
-      <div class="small-container">
-        <div class="timer-countdown"></div>
-        <div class="mission-info"></div>
-      </div>
-      <div class="small-container">
-        <div class="map-container" id="map"></div>
-        <div class="giphy-container"></div>
-      </div>
-    </div>
-  </div>
-</main>
+  </main>
 </body>
+
 </html>

@@ -2,11 +2,13 @@
 class SpaceX{
   constructor(){
     this.arrayOfLaunches = [];
+    this.displayMissionData = this.displayMissionData.bind(this);
+    this.displayMissionList = this.displayMissionList.bind(this);
     this.getUpcomingLaunches();
   }
 
 addEventHandlers(){
-  $('.launch-list').on('click', this.displayMissionData)
+  // $('.upcoming-launch').on('click', '.launch-list', this.displayMissionData)
 }
 getUpcomingLaunches() {
   var ajaxConfigObject = {
@@ -24,16 +26,16 @@ displayMissionList(response){
   var $upcomingLaunch = $('.upcoming-launch');
   for(var indexOfarrayOfLaunches = 0; indexOfarrayOfLaunches < this.arrayOfLaunches.length; indexOfarrayOfLaunches++){
     var missionObject = this.arrayOfLaunches[indexOfarrayOfLaunches];
-    var mission = new Mission(indexOfarrayOfLaunches, missionObject);
+    var mission = new Mission(indexOfarrayOfLaunches, missionObject, this.displayMissionData);
     var $mission = mission.render();
     $upcomingLaunch.append($mission);
   }
   console.log(response);
 }
 
-//   displayMissionData() {
-//     var missionObj = this.listOfLaunches[this.listOfLaunches.attr('id')];
-//     console.log("hello: ", missionObj);
-//   }
+displayMissionData(missionObj) {
+  $('.mission-info').append(missionObj);
+  console.log("hello: ", missionObj);
+}
 
 }

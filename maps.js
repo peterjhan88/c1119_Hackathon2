@@ -37,20 +37,3 @@ function createMap() {
   };
   map = new google.maps.Map(document.getElementById('map'), options);
 }
-
-class Map{
-  constructor(){
-    this.map;
-  }
-  createMap(){
-    console.log("creating map");
-    var options = {
-      center: {
-        lat: 33.634984,
-        lng: -117.740424
-      },
-      zoom: 18,
-      disableDefaultUI: true;
-    }
-  }
-}

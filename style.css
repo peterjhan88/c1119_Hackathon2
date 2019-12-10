@@ -9,7 +9,7 @@
 .upcoming-launch,
 .trailer,
 .omdb,
-.left-column,
+/* .left-column, */
 .right-column,
 .timer-countdown,
 .small-container,
@@ -41,20 +41,24 @@
   font-size: 3vmin;
 }
 .left-column {
+  overflow-y: scroll;
+  background-color: goldenrod;
   width: 30%;
   height: 100%;
 }
 .upcoming-launch {
+  flex-direction: column;
   width: 100%;
-  height: 100%;
 }
-
+.launch-list{
+  width: 100%;
+  height: 50px;
+}
 .right-column {
   width: 70%;
   height: 100%;
   flex-direction: column;
 }
-
 .small-container {
   width: 100%;
   height: 50%;

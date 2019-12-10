@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .space-header,
 .title,

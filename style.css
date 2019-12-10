@@ -15,7 +15,7 @@
 .timer-countdown,
 .mission-info,
 .map,
-.gimphy-contianer {
+.giphy-contianer {
   display: flex;
 }
 .space-header,
@@ -78,8 +78,13 @@
   height: 80%;
 }
 
-.map-contianer,
-.gimphy-container {
+.map-container,
+.giphy-container {
+  width: 100%;
+  height: 100%;
+}
+
+.image-gif{
   width: 100%;
   height: 100%;
 }

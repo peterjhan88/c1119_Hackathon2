@@ -1,4 +1,3 @@
-
 class SpaceX{
   constructor(){
     this.arrayOfLaunches = [];
@@ -29,11 +28,5 @@ displayMissionList(response){
     $upcomingLaunch.append($mission);
   }
   console.log(response);
-}
-
-//   displayMissionData() {
-//     var missionObj = this.listOfLaunches[this.listOfLaunches.attr('id')];
-//     console.log("hello: ", missionObj);
-//   }
-
+  }
 }

@@ -3,59 +3,80 @@
   margin: 0;
   border: 1px solid black;
 }
-.movie-entry-container,
-.user-input,
-.button,
+.space-header,
+.title,
 .container,
-.articles,
+.upcoming-launch,
 .trailer,
 .omdb,
 .left-column,
-.right-column{
+.right-column,
+.timer-countdown,
+.small-container,
+.timer-countdown,
+.mission-info,
+.map,
+.gimphy-contianer {
   display: flex;
 }
-.movie-entry-container {
+.space-header,
+.title  {
+  justify-content: center;
+  align-items: center;
+}
+.space-header{
   width: 100%;
   height: 15vh;
-  justify-content: space-around;
-  align-items: center;
   font-size: 3vmin;
 }
 .container {
   width: 100%;
   height: 85vh;
 }
-.user-input {
+.title {
   width: 40%;
   height: 60%;
+  justify-content: center;
   align-items: center;
   font-size: 3vmin;
 }
-.button {
-  width: 15%;
-  height: 45%;
-  border-radius: 8px;
-  font-weight: bold;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.button:hover {
-  transform: scale(1.3);
-}
-.left-column, .right-column{
-  width: 100%;
+.left-column {
+  width: 30%;
   height: 100%;
 }
-.right-column {
-  flex-direction: column;
-}
-.articles {
+.upcoming-launch {
   width: 100%;
   height: 100%;
 }
 
-.trailer, .omdb {
+.right-column {
+  width: 70%;
+  height: 100%;
+  flex-direction: column;
+}
+
+.small-container {
   width: 100%;
   height: 50%;
+}
+.small-container:first-child{
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.timer-countdown {
+  width: 80%;
+  height: 15%;
+}
+
+.mission-info {
+  width: 100%;
+  height: 80%;
+}
+
+.map-contianer,
+.gimphy-container {
+  width: 100%;
+  height: 100%;
 }

@@ -24,8 +24,9 @@ function spaceXGiphy(mission_name){
 function listOfGifs(response){
   globalGiphyResult = response;
   for(var indexOfListOfGifs = 0; indexOfListOfGifs < globalGiphyResult.data.length; indexOfListOfGifs++){
-    var images = (globalGiphyResult.data[1].images.original.url);
+    var allImages = (globalGiphyResult.data[indexOfListOfGifs].images.original.url);
   }
+  var images = (globalGiphyResult.data[1].images.original.url);
   var appendImages = $('<img>').addClass('image-gif').attr('src', images);
   $('.giphy-container').append(appendImages);
   console.log(response);

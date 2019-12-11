@@ -2,14 +2,21 @@ class SpaceX{
   constructor(){
     this.arrayOfLaunches = [];
     this.globalGiphyResult = [];
+    this.newYorkTimesResult = [];
     this.displayMissionData = this.displayMissionData.bind(this);
     this.displayMissionList = this.displayMissionList.bind(this);
     this.processGetUpcomingLaunches = this.processGetUpcomingLaunches.bind(this);
     this.processGetUpcomingLaunchesError = this.processGetUpcomingLaunchesError.bind(this);
     this.spaceXGiphy = this.spaceXGiphy.bind(this);
     this.displayGiphy = this.displayGiphy.bind(this);
+    this.displayArticle = this.displayArticle.bind(this);
     this.processSpaceXGiphy = this.processSpaceXGiphy.bind(this);
     this.processSpaceXGiphyError = this.processSpaceXGiphyError.bind(this);
+    this.processGetNewYorkTimesArticleError = this.processGetNewYorkTimesArticleError.bind(this);
+    this.processGetNewYorkTimesArticle = this.processGetNewYorkTimesArticle.bind(this);
+    this.processGetNewYorkTimesArticle2 = this.processGetNewYorkTimesArticle2.bind(this);
+    this.processGetNewYorkTimesArticleError2 = this.processGetNewYorkTimesArticleError2.bind(this);
+
     this.getUpcomingLaunches();
   }
 
@@ -29,6 +36,8 @@ class SpaceX{
     this.displayMissionList(response);
     var numberOfScheduledLaunches = response.length
     this.spaceXGiphy();
+    this.getNewYorkTimesArticle();
+    this.getNewYorkTimesArticlePage2();
   }
 
   processGetUpcomingLaunchesError(response){
@@ -40,7 +49,7 @@ class SpaceX{
     var $upcomingLaunch = $('.upcoming-launch');
     for(var indexOfarrayOfLaunches = 0; indexOfarrayOfLaunches < this.arrayOfLaunches.length; indexOfarrayOfLaunches++){
       var missionObject = this.arrayOfLaunches[indexOfarrayOfLaunches];
-      var mission = new Mission(indexOfarrayOfLaunches, missionObject, this.displayMissionData, this.displayGiphy);
+      var mission = new Mission(indexOfarrayOfLaunches, missionObject, this.displayMissionData, this.displayGiphy, this.displayArticle);
       var $mission = mission.render();
       $upcomingLaunch.append($mission);
     }
@@ -53,20 +62,28 @@ class SpaceX{
     var $flightNumber = $('<div>').addClass('left-data-quarter-2').text('Flight Number: ' + missionObj.flight_number);
     var $launchDate = $('<div>').addClass('left-data-quarter-3').text('Local Launch Date: ' + missionObj.launch_date_local);
     var $launchDateUtc = $('<div>').addClass('left-data-quarter-4').text('UTC Launch Date: ' + missionObj.launch_date_utc);
-    var $details = $('<div>').addClass('right-data-bottom-half').text('Details: ' + missionObj.details);
+    // var $details = $('<div>').addClass('right-data-bottom-half').text('Details: ' + missionObj.details);
 
     var $leftDataBox = $('<div>').addClass('left-data');
     var $rightDataBox = $('<div>').addClass('right-data');
     $missionInfo.append($leftDataBox);
     $missionInfo.append($rightDataBox);
     $leftDataBox.append($rocketName, $flightNumber, $launchDate, $launchDateUtc);
-    $rightDataBox.append($details);
+    // $rightDataBox.append($details);
   }
 
   displayGiphy(missionIndex) {
     $('.giphy-container').empty();
     var gifImage = $('<img>').addClass('image-gif').attr('src',this.globalGiphyResult[missionIndex]);
     $('.giphy-container').append(gifImage);
+  }
+
+  displayArticle(missionIndex) {
+    $('.right-data').empty();
+     var articleTitle = $('<div>').addClass('article-title').text(this.newYorkTimesResult[missionIndex].headline.print_headline);
+     var details = $('<div>').addClass('right-data-bottom-half').text(this.newYorkTimesResult[missionIndex].abstract);
+     var hyperlink = $('<a>').attr('href', this.newYorkTimesResult[missionIndex].web_url).attr('target', '_blank').text("To Read More Click Here");
+     $('.right-data').append(articleTitle, details, hyperlink);
   }
 
   spaceXGiphy() {
@@ -100,5 +117,55 @@ class SpaceX{
 
   processSpaceXGiphyError(responseFromGiphy) {
     console.log(responseFromGiphy);
+  }
+
+
+getNewYorkTimesArticle(){
+  var ajaxConfigObject = {
+    dataType: 'json',
+    url: 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=spacex&api-key=ARMCshLZUBtpwHbzJg0w4bD27vSNHnBj',
+    method: 'GET',
+    success: this.processGetNewYorkTimesArticle,
+    error: this.processGetNewYorkTimesArticleError
+  }
+  $.ajax(ajaxConfigObject);
+}
+
+processGetNewYorkTimesArticle(responseFromNewYorkTimes) {
+  console.log("is this working?",responseFromNewYorkTimes);
+  for (var indexOfNewYorkTimesURL = 0; indexOfNewYorkTimesURL < responseFromNewYorkTimes.response.docs.length; indexOfNewYorkTimesURL++) {
+    this.newYorkTimesResult.push(responseFromNewYorkTimes.response.docs[indexOfNewYorkTimesURL]);
+
+
+    console.log("Please work");
+  }
+}
+
+  processGetNewYorkTimesArticleError(responseFromNewYorkTimes) {
+    console.log(responseFromNewYorkTimes);
+  }
+
+  getNewYorkTimesArticlePage2() {
+    var ajaxConfigObject = {
+      dataType: 'json',
+      url: 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=spacex&page=1&api-key=ARMCshLZUBtpwHbzJg0w4bD27vSNHnBj',
+      method: 'GET',
+      success: this.processGetNewYorkTimesArticle2,
+      error: this.processGetNewYorkTimesArticleError2
+    }
+    $.ajax(ajaxConfigObject);
+  }
+
+  processGetNewYorkTimesArticle2(responseFromNewYorkTimes) {
+    console.log("is this working?", responseFromNewYorkTimes);
+    for (var indexOfNewYorkTimesURL = 0; indexOfNewYorkTimesURL < responseFromNewYorkTimes.response.docs.length; indexOfNewYorkTimesURL++) {
+      this.newYorkTimesResult.push(responseFromNewYorkTimes.response.docs[indexOfNewYorkTimesURL]);
+
+      console.log("page 2 added");
+    }
+  }
+
+  processGetNewYorkTimesArticleError2(responseFromNewYorkTimes) {
+    console.log(responseFromNewYorkTimes);
   }
 }

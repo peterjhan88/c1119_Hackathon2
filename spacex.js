@@ -66,27 +66,8 @@ class SpaceX{
     $rightDataBox.append($details);
   }
 
-
-  //   var result="";
-  //   result += "Details: " + missionObj.details+"<br>";
-  //   result += "Mission Name: " + missionObj.mission_name + "<br>";
-  //   result += "Flight Number: " + missionObj.flight_number + "<br>";
-  //   result += "Launch Year: " + missionObj.launch_year + "<br>";
-  //   result += "Launch Date: " + missionObj.launch_date_local + "<br>";
-  //   result += "Launch Date Source: " + missionObj.launch_date_source + "<br>";
-  //   result += "Lanch Date Unix: " + missionObj.launch_date_unix + "<br>";
-  //   result += "Launch Date UTC: " + missionObj.launch_date_utc + "<br>";
-  //   result += "Rocket Name: " + missionObj.rocket.rocket_name;
-
-  //   $missionInfo.html(result);
-  // }
-
   displayGiphy(missionIndex) {
-    // console.log(missionObj)
     $('.giphy-container').empty();
-    // var imageIndex = missionObj.missionIndex;
-    // console.log(imageIndex);
-    // var randomGif = Math.floor(Math.random() * this.globalGiphyResult.length);
     var gifImage = $('<img>').addClass('image-gif').attr('src',this.globalGiphyResult[missionIndex]);
     $('.giphy-container').append(gifImage);
 

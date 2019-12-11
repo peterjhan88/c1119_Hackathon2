@@ -49,21 +49,37 @@ class SpaceX{
   }
 
   displayMissionData(missionObj) {
+    debugger;
     var $missionInfo = $('.mission-info');
     $missionInfo.empty()
-    var result="";
-    result += "Details: " + missionObj.details+"<br>";
-    result += "Mission Name: " + missionObj.mission_name + "<br>";
-    result += "Flight Number: " + missionObj.flight_number + "<br>";
-    result += "Launch Year: " + missionObj.launch_year + "<br>";
-    result += "Launch Date: " + missionObj.launch_date_local + "<br>";
-    result += "Launch Date Source: " + missionObj.launch_date_source + "<br>";
-    result += "Lanch Date Unix: " + missionObj.launch_date_unix + "<br>";
-    result += "Launch Date UTC: " + missionObj.launch_date_utc + "<br>";
-    result += "Rocket Name: " + missionObj.rocket.rocket_name;
+    var $rocketName = $('<div>').addClass('left-data-quarter-1').text('Rocket Name: ' + missionObj.rocket.rocket_name);
+    var $flightNumber = $('<div>').addClass('left-data-quarter-2').text('Flight Number: ' + missionObj.flight_number);
+    var $launchDate = $('<div>').addClass('left-data-quarter-3').text('Local Launch Date: ' + missionObj.launch_date_local);
+    var $launchDateUtc = $('<div>').addClass('left-data-quarter-4').text('UTC Launch Date: ' + missionObj.launch_date_utc);
+    var $details = $('<div>').addClass('right-data-bottom-half').text('Details: ' + missionObj.details);
 
-    $missionInfo.html(result);
+    var $leftDataBox = $('<div>').addClass('left-data');
+    var $rightDataBox = $('<div>').addClass('right-data');
+    $missionInfo.append($leftDataBox);
+    $missionInfo.append($rightDataBox);
+    $leftDataBox.append($rocketName, $flightNumber, $launchDate, $launchDateUtc);
+    $rightDataBox.append($details);
   }
+
+
+  //   var result="";
+  //   result += "Details: " + missionObj.details+"<br>";
+  //   result += "Mission Name: " + missionObj.mission_name + "<br>";
+  //   result += "Flight Number: " + missionObj.flight_number + "<br>";
+  //   result += "Launch Year: " + missionObj.launch_year + "<br>";
+  //   result += "Launch Date: " + missionObj.launch_date_local + "<br>";
+  //   result += "Launch Date Source: " + missionObj.launch_date_source + "<br>";
+  //   result += "Lanch Date Unix: " + missionObj.launch_date_unix + "<br>";
+  //   result += "Launch Date UTC: " + missionObj.launch_date_utc + "<br>";
+  //   result += "Rocket Name: " + missionObj.rocket.rocket_name;
+
+  //   $missionInfo.html(result);
+  // }
 
   displayGiphy(missionIndex) {
     // console.log(missionObj)

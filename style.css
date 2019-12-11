@@ -6,16 +6,21 @@
 .title,
 .container,
 .upcoming-launch,
+.launch-list,
 .right-column,
 .small-container,
 .timer-countdown,
 .mission-info,
 .map-container,
-.giphy-contianer {
+.giphy-contianer,
+.left-data-quarter-1,
+.left-data-quarter-2,
+.left-data-quarter-3,
+.left-data-quarter-4 {
   display: flex;
 }
 .space-header,
-.title  {
+.title {
   justify-content: center;
   align-items: center;
 }
@@ -48,6 +53,13 @@
 .launch-list{
   width: 100%;
   height: 50px;
+  margin: 10px;
+  padding-left: 4px;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid purple;
+  font-size: 3.5vmin;
+  color: white;
 }
 .right-column {
   width: 70%;
@@ -76,7 +88,31 @@
   height: 80%;
   border: 2px solid red;
 }
-
+.left-data, .right-data{
+  height: 100%;
+  width: 50%;
+  border: 2px solid springgreen;
+}
+.left-data-quarter-1,
+.left-data-quarter-2,
+.left-data-quarter-3,
+.left-data-quarter-4{
+  height: 25%;
+  width: 100%;
+  border: 2px solid purple;
+  align-items: center;
+  font-size: 3vmin;
+}
+.right-data-top-quarter{
+  height: 25%;
+  width: 100%;
+  border: 2px solid orange;
+}
+.right-data-bottom-half{
+  height: 50%;
+  width: 100%;
+  border: 2px solid forestgreen;
+}
 .map-container,
 .giphy-container {
   width: 100%;

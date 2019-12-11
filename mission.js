@@ -2,7 +2,6 @@ class Mission{
   constructor(missionIndex, missionObj, handleCallback){
     this.missionIndex = missionIndex;
     this.missionObj = missionObj;
-    console.log(handleCallback);
     this.handleCallback = handleCallback;
     this.handleClick = this.handleClick.bind(this);
   }
@@ -20,10 +19,4 @@ class Mission{
   handleClick(){
     this.handleCallback(this.missionObj);
   }
-
-//   missionInfo(){
-//     var infoContainer = ('.mission-info');
-//     var details = ('<div>').text(this.missionObj.details);
-//     infoContainer.append(details);
-//   }
 }

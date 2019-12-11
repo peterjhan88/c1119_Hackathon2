@@ -9,7 +9,7 @@ class SpaceX{
   addEventHandlers(){
     // $('.upcoming-launch').on('click', '.launch-list', this.displayMissionData)
   }
-  
+
   getUpcomingLaunches() {
     var ajaxConfigObject = {
       dataType: 'json',
@@ -34,7 +34,19 @@ class SpaceX{
   }
 
   displayMissionData(missionObj) {
-    $('.mission-info').append(missionObj);
-    console.log("hello: ", missionObj);
+    var $missionInfo = $('.mission-info');
+    $missionInfo.empty()
+    var result="";
+    result += missionObj.details+"<br>";
+    result += missionObj.mission_name + "<br>";
+    result += missionObj.flight_number + "<br>";
+    result += missionObj.launch_year + "<br>";
+    result += missionObj.launch_date_local + "<br>";
+    result += missionObj.launch_date_source + "<br>";
+    result += missionObj.launch_date_unix + "<br>";
+    result += missionObj.launch_date_utc + "<br>";
+    result += missionObj.rocket.rocket_name;
+
+    $missionInfo.html(result);
   }
 }

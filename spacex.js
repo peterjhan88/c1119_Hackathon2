@@ -10,6 +10,12 @@ class SpaceX{
     this.displayGiphy = this.displayGiphy.bind(this);
     this.processSpaceXGiphy = this.processSpaceXGiphy.bind(this);
     this.processSpaceXGiphyError = this.processSpaceXGiphyError.bind(this);
+
+    this.myMap = new MyGoogleMap();
+    this.handleMap = this.handleMap.bind(this);
+
+
+
     this.getUpcomingLaunches();
   }
 
@@ -40,7 +46,7 @@ class SpaceX{
     var $upcomingLaunch = $('.upcoming-launch');
     for(var indexOfarrayOfLaunches = 0; indexOfarrayOfLaunches < this.arrayOfLaunches.length; indexOfarrayOfLaunches++){
       var missionObject = this.arrayOfLaunches[indexOfarrayOfLaunches];
-      var mission = new Mission(indexOfarrayOfLaunches, missionObject, this.displayMissionData, this.displayGiphy);
+      var mission = new Mission(indexOfarrayOfLaunches, missionObject, this.displayMissionData, this.displayGiphy, this.handleMap);
       var $mission = mission.render();
       $upcomingLaunch.append($mission);
     }
@@ -100,5 +106,9 @@ class SpaceX{
 
   processSpaceXGiphyError(responseFromGiphy) {
     console.log(responseFromGiphy);
+  }
+
+  handleMap(missionObj){
+    this.myMap.searchTargetLocation(missionObj);
   }
 }

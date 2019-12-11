@@ -37,15 +37,15 @@ class SpaceX{
     var $missionInfo = $('.mission-info');
     $missionInfo.empty()
     var result="";
-    result += missionObj.details+"<br>";
-    result += missionObj.mission_name + "<br>";
-    result += missionObj.flight_number + "<br>";
-    result += missionObj.launch_year + "<br>";
-    result += missionObj.launch_date_local + "<br>";
-    result += missionObj.launch_date_source + "<br>";
-    result += missionObj.launch_date_unix + "<br>";
-    result += missionObj.launch_date_utc + "<br>";
-    result += missionObj.rocket.rocket_name;
+    result += "Details: " + missionObj.details+"<br>";
+    result += "Mission Name: " + missionObj.mission_name + "<br>";
+    result += "Flight Number: " + missionObj.flight_number + "<br>";
+    result += "Launch Year: " + missionObj.launch_year + "<br>";
+    result += "Launch Date: " + missionObj.launch_date_local + "<br>";
+    result += "Launch Date Source: " + missionObj.launch_date_source + "<br>";
+    result += "Lanch Date Unix: " + missionObj.launch_date_unix + "<br>";
+    result += "Launch Date UTC: " + missionObj.launch_date_utc + "<br>";
+    result += "Rocket Name: " + missionObj.rocket.rocket_name;
 
     $missionInfo.html(result);
   }

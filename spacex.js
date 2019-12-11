@@ -16,10 +16,10 @@ class SpaceX{
     this.processGetNewYorkTimesArticle = this.processGetNewYorkTimesArticle.bind(this);
     this.processGetNewYorkTimesArticle2 = this.processGetNewYorkTimesArticle2.bind(this);
     this.processGetNewYorkTimesArticleError2 = this.processGetNewYorkTimesArticleError2.bind(this);
-
+    this.myMap = new MyGoogleMap();
+    this.handleMap = this.handleMap.bind(this);
     this.getUpcomingLaunches();
   }
-
 
   getUpcomingLaunches() {
     var ajaxConfigObject = {
@@ -49,7 +49,7 @@ class SpaceX{
     var $upcomingLaunch = $('.upcoming-launch');
     for(var indexOfarrayOfLaunches = 0; indexOfarrayOfLaunches < this.arrayOfLaunches.length; indexOfarrayOfLaunches++){
       var missionObject = this.arrayOfLaunches[indexOfarrayOfLaunches];
-      var mission = new Mission(indexOfarrayOfLaunches, missionObject, this.displayMissionData, this.displayGiphy, this.displayArticle);
+      var mission = new Mission(indexOfarrayOfLaunches, missionObject, this.displayMissionData, this.displayGiphy, , this.handleMap, this.displayArticle);
       var $mission = mission.render();
       $upcomingLaunch.append($mission);
     }
@@ -62,14 +62,11 @@ class SpaceX{
     var $flightNumber = $('<div>').addClass('left-data-quarter-2').text('Flight Number: ' + missionObj.flight_number);
     var $launchDate = $('<div>').addClass('left-data-quarter-3').text('Local Launch Date: ' + missionObj.launch_date_local);
     var $launchDateUtc = $('<div>').addClass('left-data-quarter-4').text('UTC Launch Date: ' + missionObj.launch_date_utc);
-    // var $details = $('<div>').addClass('right-data-bottom-half').text('Details: ' + missionObj.details);
-
     var $leftDataBox = $('<div>').addClass('left-data');
     var $rightDataBox = $('<div>').addClass('right-data');
     $missionInfo.append($leftDataBox);
     $missionInfo.append($rightDataBox);
     $leftDataBox.append($rocketName, $flightNumber, $launchDate, $launchDateUtc);
-    // $rightDataBox.append($details);
   }
 
   displayGiphy(missionIndex) {
@@ -118,28 +115,24 @@ class SpaceX{
   processSpaceXGiphyError(responseFromGiphy) {
     console.log(responseFromGiphy);
   }
-
-
-getNewYorkTimesArticle(){
-  var ajaxConfigObject = {
-    dataType: 'json',
-    url: 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=spacex&api-key=ARMCshLZUBtpwHbzJg0w4bD27vSNHnBj',
-    method: 'GET',
-    success: this.processGetNewYorkTimesArticle,
-    error: this.processGetNewYorkTimesArticleError
+  
+  getNewYorkTimesArticle(){
+    var ajaxConfigObject = {
+      dataType: 'json',
+      url: 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=spacex&api-key=ARMCshLZUBtpwHbzJg0w4bD27vSNHnBj',
+      method: 'GET',
+      success: this.processGetNewYorkTimesArticle,
+      error: this.processGetNewYorkTimesArticleError
+    }
+    $.ajax(ajaxConfigObject);
   }
-  $.ajax(ajaxConfigObject);
-}
 
-processGetNewYorkTimesArticle(responseFromNewYorkTimes) {
-  console.log("is this working?",responseFromNewYorkTimes);
-  for (var indexOfNewYorkTimesURL = 0; indexOfNewYorkTimesURL < responseFromNewYorkTimes.response.docs.length; indexOfNewYorkTimesURL++) {
-    this.newYorkTimesResult.push(responseFromNewYorkTimes.response.docs[indexOfNewYorkTimesURL]);
-
-
-    console.log("Please work");
+  processGetNewYorkTimesArticle(responseFromNewYorkTimes) {
+    console.log("is this working?",responseFromNewYorkTimes);
+    for (var indexOfNewYorkTimesURL = 0; indexOfNewYorkTimesURL < responseFromNewYorkTimes.response.docs.length; indexOfNewYorkTimesURL++) {
+      this.newYorkTimesResult.push(responseFromNewYorkTimes.response.docs[indexOfNewYorkTimesURL]);
+    }
   }
-}
 
   processGetNewYorkTimesArticleError(responseFromNewYorkTimes) {
     console.log(responseFromNewYorkTimes);
@@ -167,5 +160,7 @@ processGetNewYorkTimesArticle(responseFromNewYorkTimes) {
 
   processGetNewYorkTimesArticleError2(responseFromNewYorkTimes) {
     console.log(responseFromNewYorkTimes);
+  handleMap(missionObj){
+    this.myMap.searchTargetLocation(missionObj);
   }
 }

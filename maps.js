@@ -8,7 +8,6 @@ class MyGoogleMap{
       center : this.startPosition,
       zoom : 10
     });
-    this.infoWindow ;
     this.service = new google.maps.places.PlacesService(this.map);
 
     this.searchTargetLocation = this.searchTargetLocation.bind(this);
@@ -28,11 +27,6 @@ class MyGoogleMap{
             map: missionMap,
             position: results[i].geometry.location
           });
-
-          google.maps.event.addListener(marker, "click", function () {
-            this.infoWindow.setContent(mission.launch_site.site_name);
-            this.infoWindow.open(missionMap, this);
-          })
         }
         missionMap.setCenter(results[0].geometry.location);
       }

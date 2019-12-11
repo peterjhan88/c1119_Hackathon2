@@ -1,7 +1,7 @@
 $(document).ready(initializeApp);
 
-var spaceXLauches;
+var spaceXLaunches;
 function initializeApp(){
 
-  spaceXLauches = new SpaceX();
-};
+  spaceXLaunches = new SpaceX();
+}

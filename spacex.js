@@ -28,7 +28,6 @@ class SpaceX{
   processGetUpcomingLaunches(response){
     this.displayMissionList(response);
     var numberOfScheduledLaunches = response.length
-    console.log("numberofscheduledlaunches", numberOfScheduledLaunches);
     this.spaceXGiphy();
   }
 
@@ -45,11 +44,9 @@ class SpaceX{
       var $mission = mission.render();
       $upcomingLaunch.append($mission);
     }
-    console.log(response);
   }
 
   displayMissionData(missionObj) {
-    debugger;
     var $missionInfo = $('.mission-info');
     $missionInfo.empty()
     var $rocketName = $('<div>').addClass('left-data-quarter-1').text('Rocket Name: ' + missionObj.rocket.rocket_name);
@@ -70,24 +67,35 @@ class SpaceX{
     $('.giphy-container').empty();
     var gifImage = $('<img>').addClass('image-gif').attr('src',this.globalGiphyResult[missionIndex]);
     $('.giphy-container').append(gifImage);
-
   }
 
   spaceXGiphy() {
     var ajaxConfigObject = {
       dataType: 'json',
-      url: 'https://api.giphy.com/v1/gifs/search?api_key=GMpvvHWrDqks3qUBWnICzjIx4NAxOHvi&q=spacex&limit=19&offset=0&rating=G&lang=en',
+      url: 'https://api.giphy.com/v1/gifs/search?api_key=GMpvvHWrDqks3qUBWnICzjIx4NAxOHvi&q=spacex&limit=40&offset=0&rating=G&lang=en',
       method: 'GET',
       success: this.processSpaceXGiphy,
-      error: console.log('gif error')
+      error: this.processSpaceXGiphyError
     }
     $.ajax(ajaxConfigObject);
   }
 
   processSpaceXGiphy(responseFromGiphy) {
+    console.log(responseFromGiphy)
     for (var indexOfListOfGifs = 0; indexOfListOfGifs < responseFromGiphy.data.length; indexOfListOfGifs++) {
       this.globalGiphyResult.push(responseFromGiphy.data[indexOfListOfGifs].images.original.url);
+
     }
+    this.globalGiphyResult.splice(10,1).shift();
+    this.globalGiphyResult.splice(14, 1).shift();
+    this.globalGiphyResult.splice(4, 1).shift();
+    this.globalGiphyResult.splice(7, 1).shift();
+    this.globalGiphyResult.splice(12, 1).shift();
+    this.globalGiphyResult.splice(4, 1).shift();
+    this.globalGiphyResult.splice(9, 1).shift();
+    this.globalGiphyResult.splice(4, 1).shift();
+    this.globalGiphyResult.splice(8, 1).shift();
+    this.globalGiphyResult.splice(4, 1).shift();
   }
 
   processSpaceXGiphyError(responseFromGiphy) {

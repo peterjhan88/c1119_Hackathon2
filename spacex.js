@@ -49,7 +49,7 @@ class SpaceX{
     var $upcomingLaunch = $('.upcoming-launch');
     for(var indexOfarrayOfLaunches = 0; indexOfarrayOfLaunches < this.arrayOfLaunches.length; indexOfarrayOfLaunches++){
       var missionObject = this.arrayOfLaunches[indexOfarrayOfLaunches];
-      var mission = new Mission(indexOfarrayOfLaunches, missionObject, this.displayMissionData, this.displayGiphy, , this.handleMap, this.displayArticle);
+      var mission = new Mission(indexOfarrayOfLaunches, missionObject, this.displayMissionData, this.displayGiphy, this.handleMap, this.displayArticle);
       var $mission = mission.render();
       $upcomingLaunch.append($mission);
     }
@@ -77,10 +77,10 @@ class SpaceX{
 
   displayArticle(missionIndex) {
     $('.right-data').empty();
-     var articleTitle = $('<div>').addClass('article-title').text(this.newYorkTimesResult[missionIndex].headline.print_headline);
-     var details = $('<div>').addClass('right-data-bottom-half').text(this.newYorkTimesResult[missionIndex].abstract);
-     var hyperlink = $('<a>').attr('href', this.newYorkTimesResult[missionIndex].web_url).attr('target', '_blank').text("To Read More Click Here");
-     $('.right-data').append(articleTitle, details, hyperlink);
+    var articleTitle = $('<div>').addClass('article-title').text(this.newYorkTimesResult[missionIndex].headline.main);
+    var details = $('<div>').addClass('right-data-bottom-half').text(this.newYorkTimesResult[missionIndex].abstract);
+    var hyperlink = $('<a>').attr('href', this.newYorkTimesResult[missionIndex].web_url).attr('target', '_blank').text("To Read More Click Here");
+    $('.right-data').append(articleTitle, details, hyperlink);
   }
 
   spaceXGiphy() {
@@ -115,7 +115,7 @@ class SpaceX{
   processSpaceXGiphyError(responseFromGiphy) {
     console.log(responseFromGiphy);
   }
-  
+
   getNewYorkTimesArticle(){
     var ajaxConfigObject = {
       dataType: 'json',
@@ -160,6 +160,8 @@ class SpaceX{
 
   processGetNewYorkTimesArticleError2(responseFromNewYorkTimes) {
     console.log(responseFromNewYorkTimes);
+  }
+
   handleMap(missionObj){
     this.myMap.searchTargetLocation(missionObj);
   }

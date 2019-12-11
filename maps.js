@@ -6,7 +6,8 @@ class MyGoogleMap{
     };
     this.map = new google.maps.Map(document.getElementById('map'), {
       center : this.startPosition,
-      zoom : 10
+      disableDefaultUI: true,
+      zoom : 12
     });
     this.service = new google.maps.places.PlacesService(this.map);
 

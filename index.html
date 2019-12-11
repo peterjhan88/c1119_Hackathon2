@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,10 @@
   <script src="giphy.js"></script>
   <script src="maps.js"></script>
   <script src="main.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfM2SL2HiEkMtyxdv01MNlU1oTNcvc9qM" async defer></script>
   <title>SPACE-X!!!!</title>
 </head>
+
 <body>
 <header>
   <div class="space-header">
@@ -26,17 +29,25 @@
       <div class="upcoming-launch">
       </div>
     </div>
-    <div class="right-column">
-      <div class="small-container">
-        <div class="timer-countdown"></div>
-        <div class="mission-info"></div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="left-column">
+        <div class="upcoming-launch bg-red">
+        </div>
       </div>
-      <div class="small-container">
-        <div class="map-container"></div>
-        <div class="giphy-container"></div>
+      <div class="right-column">
+        <div class="small-container">
+          <div class="timer-countdown"></div>
+          <div class="mission-info"></div>
+        </div>
+        <div class="small-container">
+          <div class="map-container" id="map"><button id="test-btn">show me the map</button></div>
+          <div class="giphy-containert"></div>
+        </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
 </body>
+
 </html>

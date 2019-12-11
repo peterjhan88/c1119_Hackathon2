@@ -1,10 +1,12 @@
 class Mission{
-  constructor(missionIndex, missionObj, handleCallback, handleGiphyCallback){
+  constructor(missionIndex, missionObj, handleCallback, handleGiphyCallback, handleMapCallback){
     this.missionIndex = missionIndex;
     this.missionObj = missionObj;
     this.handleCallback = handleCallback;
     this.handleGiphyCallback = handleGiphyCallback;
     this.handleClick = this.handleClick.bind(this);
+
+    this.handleMapCallback = handleMapCallback;
   }
 
   missionData(missionObj){
@@ -20,5 +22,6 @@ class Mission{
   handleClick(){
     this.handleCallback(this.missionObj);
     this.handleGiphyCallback(this.missionIndex);
+    this.handleMapCallback(this.missionObj);
   }
 }

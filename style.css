@@ -6,12 +6,11 @@
 .title,
 .container,
 .upcoming-launch,
-.left-column,
 .right-column,
 .small-container,
 .timer-countdown,
 .mission-info,
-.map,
+.map-container,
 .giphy-contianer {
   display: flex;
 }
@@ -37,20 +36,24 @@
   font-size: 3vmin;
 }
 .left-column {
+  overflow-y: scroll;
+  background-color: goldenrod;
   width: 30%;
   height: 100%;
 }
 .upcoming-launch {
+  flex-direction: column;
   width: 100%;
-  height: 100%;
 }
-
+.launch-list{
+  width: 100%;
+  height: 50px;
+}
 .right-column {
   width: 70%;
   height: 100%;
   flex-direction: column;
 }
-
 .small-container {
   width: 100%;
   height: 50%;
@@ -77,38 +80,10 @@
   height: 100%;
 }
 
-.bg-red {
-  background-color: red;
+.image-gif{
+  width: 100%;
+  height: 100%;
 }
-
-.bg-blue {
-  background-color: blue;
-}
-
-.bg-chartreuse {
-  background-color: chartreuse;
-}
-
-.bg-navy {
-  background-color: navy;
-}
-
-.bg-brown {
-  background-color: brown;
-}
-
-.bg-rebeccapurple {
-  background-color: rebeccapurple;
-}
-
-.bg-violet {
-  background-color: violet;
-}
-
-.bg-yellow {
-  background-color: yellow;
-}
-
 #test-btn {
   width: 300px;
   height: 100px;

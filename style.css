@@ -54,13 +54,6 @@ body{
 .left-column {
   width: 30%;
 }
-/* .upcoming-launch-title{
-  height: 10%;
-  font-size: 6vmin;
-  color: yellow;
-  justify-content: center;
-  align-items: center;
-} */
 .upcoming-launch {
   flex-direction: column;
   height: 90%;

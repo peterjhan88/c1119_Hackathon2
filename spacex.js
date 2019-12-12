@@ -63,7 +63,9 @@ class SpaceX{
     var $launchDate = $('<div>').addClass('left-data-quarter-3').text('Local Launch Date: ' + missionObj.launch_date_local);
     var $launchDateUtc = $('<div>').addClass('left-data-quarter-4').text('UTC Launch Date: ' + missionObj.launch_date_utc);
     var $leftDataBox = $('<div>').addClass('left-data');
+    var $detailsBox = $('<div>').addClass('details').text('Details: ' + missionObj.details);
     $missionInfo.append($leftDataBox);
+    $($missionInfo.append($detailsBox));
     $leftDataBox.append($rocketName, $flightNumber, $launchDate, $launchDateUtc);
   }
 

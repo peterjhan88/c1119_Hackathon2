@@ -3,6 +3,7 @@ class SpaceX{
     this.arrayOfLaunches = [];
     this.globalGiphyResult = [];
     this.newYorkTimesResult = [];
+    this.myMap = new MyGoogleMap();
     this.displayMissionData = this.displayMissionData.bind(this);
     this.displayMissionList = this.displayMissionList.bind(this);
     this.processGetUpcomingLaunches = this.processGetUpcomingLaunches.bind(this);
@@ -16,8 +17,8 @@ class SpaceX{
     this.processGetNewYorkTimesArticle = this.processGetNewYorkTimesArticle.bind(this);
     this.processGetNewYorkTimesArticle2 = this.processGetNewYorkTimesArticle2.bind(this);
     this.processGetNewYorkTimesArticleError2 = this.processGetNewYorkTimesArticleError2.bind(this);
-    this.myMap = new MyGoogleMap();
     this.handleMap = this.handleMap.bind(this);
+
     this.getUpcomingLaunches();
   }
 
@@ -34,7 +35,6 @@ class SpaceX{
 
   processGetUpcomingLaunches(response){
     this.displayMissionList(response);
-    var numberOfScheduledLaunches = response.length
     this.spaceXGiphy();
     this.getNewYorkTimesArticle();
     this.getNewYorkTimesArticlePage2();
@@ -128,7 +128,6 @@ class SpaceX{
   }
 
   processGetNewYorkTimesArticle(responseFromNewYorkTimes) {
-    console.log("is this working?",responseFromNewYorkTimes);
     for (var indexOfNewYorkTimesURL = 0; indexOfNewYorkTimesURL < responseFromNewYorkTimes.response.docs.length; indexOfNewYorkTimesURL++) {
       this.newYorkTimesResult.push(responseFromNewYorkTimes.response.docs[indexOfNewYorkTimesURL]);
     }
@@ -150,11 +149,8 @@ class SpaceX{
   }
 
   processGetNewYorkTimesArticle2(responseFromNewYorkTimes) {
-    console.log("is this working?", responseFromNewYorkTimes);
     for (var indexOfNewYorkTimesURL = 0; indexOfNewYorkTimesURL < responseFromNewYorkTimes.response.docs.length; indexOfNewYorkTimesURL++) {
       this.newYorkTimesResult.push(responseFromNewYorkTimes.response.docs[indexOfNewYorkTimesURL]);
-
-      console.log("page 2 added");
     }
   }
 

@@ -28,24 +28,19 @@ body{
 
 }
 .space-header{
-  width: 100%;
   height: 15vh;
-  font-size: 3vmin;
   background-image: url(./images/e5bd23574cee3222e088a5de04c28eaf.jpg);
-  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 45%;
 }
 .container {
-  width: 100%;
   height: 85vh;
 }
 .left-column {
   overflow-y: scroll;
   scrollbar-width: 1px;
   width: 30%;
-  height: 100%;
 }
 .upcoming-launch {
   flex-direction: column;
@@ -57,13 +52,10 @@ body{
   margin: 10px;
   padding-left: 4px;
   align-items: center;
-  cursor: pointer;
   font-size: 3.5vmin;
   color: white;
-  -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-  font-family: 'Calistoga', cursive;
-  font-family: 'Krub', sans-serif;
+  font-family: 'Calistoga', cursive, 'Krub', sans-serif;
 }
 .launch-list:hover,
 .launch-list:active {
@@ -75,14 +67,13 @@ body{
 }
 .right-column {
   width: 70%;
-  height: 100%;
-  flex-direction: column;
+  flex-flow: column-reverse wrap;
   color: white;
 
 }
 .small-container {
-  width: 100%;
-  height: 50%;
+  width: 50%;
+  height: 100%;
 
 }
 .small-container:first-child{
@@ -90,17 +81,18 @@ body{
   justify-content: space-between;
   align-items: center;
 }
+.small-container:last-child{
+  flex-direction: column;
+}
 
 .mission-info {
   width: 100%;
-  height: 80%;
+  height: 50%;
 }
 .left-data, .right-data{
-  height: 100%;
-  width: 50%;
-
-  font-family: 'Calistoga', cursive;
-  font-family: 'Krub', sans-serif;
+  height: 50%;
+  width: 100%;
+  font-family: 'Krub', sans-serif,'Calistoga', cursive;
 }
 .right-data{
   overflow-y: scroll;
@@ -116,8 +108,7 @@ body{
   width: 100%;
   align-items: center;
   font-size: 2.5vmin;
-  font-family: 'Calistoga', cursive;
-  font-family: 'Krub', sans-serif;
+  font-family: 'Calistoga', cursive, 'Krub', sans-serif;
 }
 .right-data-top-quarter{
   height: 25%;
@@ -132,12 +123,11 @@ body{
 .map-container,
 .giphy-container {
   width: 100%;
-  height: 100%;
+  height: 50%;
 }
 .image-gif{
   width: 100%;
   height: 100%;
-  border-radius: 0%;
 }
 
 #test-btn {
@@ -150,7 +140,7 @@ body{
 /* End http://www.cursors-4u.com */
 
 .article-title{
-  font-size:3vmin;
+  font-size: 3vmin;
   font-weight: bolder;
   color: yellow;
 }

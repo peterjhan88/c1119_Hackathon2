@@ -1,18 +1,13 @@
 class SpaceX{
   constructor(){
     this.arrayOfLaunches = [];
-    // this.globalGiphyResult = [];
     this.newYorkTimesResult = [];
     this.myMap = new MyGoogleMap();
     this.displayMissionData = this.displayMissionData.bind(this);
     this.displayMissionList = this.displayMissionList.bind(this);
     this.processGetUpcomingLaunches = this.processGetUpcomingLaunches.bind(this);
     this.processGetUpcomingLaunchesError = this.processGetUpcomingLaunchesError.bind(this);
-    // this.spaceXGiphy = this.spaceXGiphy.bind(this);
-    // this.displayGiphy = this.displayGiphy.bind(this);
     this.displayArticle = this.displayArticle.bind(this);
-    // this.processSpaceXGiphy = this.processSpaceXGiphy.bind(this);
-    // this.processSpaceXGiphyError = this.processSpaceXGiphyError.bind(this);
     this.processGetNewYorkTimesArticleError = this.processGetNewYorkTimesArticleError.bind(this);
     this.processGetNewYorkTimesArticle = this.processGetNewYorkTimesArticle.bind(this);
     this.processGetNewYorkTimesArticle2 = this.processGetNewYorkTimesArticle2.bind(this);
@@ -20,7 +15,6 @@ class SpaceX{
     this.handleMap = this.handleMap.bind(this);
 
     this.getUpcomingLaunches();
-    // setTimeout(this.displayArticle, 1000);
   }
 
   getUpcomingLaunches() {
@@ -36,7 +30,6 @@ class SpaceX{
 
   processGetUpcomingLaunches(response){
     this.displayMissionList(response);
-    // this.spaceXGiphy();
     this.getNewYorkTimesArticle();
     this.getNewYorkTimesArticlePage2();
 
@@ -71,12 +64,6 @@ class SpaceX{
     $leftDataBox.append($rocketName, $flightNumber, $launchDate, $launchDateUtc);
   }
 
-  // displayGiphy(missionIndex) {
-  //   $('.giphy-container').empty();
-  //   var gifImage = $('<img>').addClass('image-gif').attr('src',this.globalGiphyResult[missionIndex]);
-  //   $('.giphy-container').append(gifImage);
-  // }
-
   displayArticle() {
       $('.right-data').empty();
     for (var i = 0; i <  this.newYorkTimesResult.length; i++){
@@ -87,39 +74,6 @@ class SpaceX{
     }
 
   }
-
-  // spaceXGiphy() {
-  //   var ajaxConfigObject = {
-  //     dataType: 'json',
-  //     url: 'https://api.giphy.com/v1/gifs/search?api_key=GMpvvHWrDqks3qUBWnICzjIx4NAxOHvi&q=spacex&limit=40&offset=0&rating=G&lang=en',
-  //     method: 'GET',
-  //     success: this.processSpaceXGiphy,
-  //     error: this.processSpaceXGiphyError
-  //   }
-  //   $.ajax(ajaxConfigObject);
-  // }
-
-  // processSpaceXGiphy(responseFromGiphy) {
-  //   console.log(responseFromGiphy)
-  //   for (var indexOfListOfGifs = 0; indexOfListOfGifs < responseFromGiphy.data.length; indexOfListOfGifs++) {
-  //     this.globalGiphyResult.push(responseFromGiphy.data[indexOfListOfGifs].images.original.url);
-
-  //   }
-  //   this.globalGiphyResult.splice(10,1).shift();
-  //   this.globalGiphyResult.splice(14, 1).shift();
-  //   this.globalGiphyResult.splice(4, 1).shift();
-  //   this.globalGiphyResult.splice(7, 1).shift();
-  //   this.globalGiphyResult.splice(12, 1).shift();
-  //   this.globalGiphyResult.splice(4, 1).shift();
-  //   this.globalGiphyResult.splice(9, 1).shift();
-  //   this.globalGiphyResult.splice(4, 1).shift();
-  //   this.globalGiphyResult.splice(8, 1).shift();
-  //   this.globalGiphyResult.splice(4, 1).shift();
-  // }
-
-  // processSpaceXGiphyError(responseFromGiphy) {
-  //   console.log(responseFromGiphy);
-  // }
 
   getNewYorkTimesArticle(){
     var ajaxConfigObject = {

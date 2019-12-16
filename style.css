@@ -139,9 +139,7 @@ body{
 
 }
 .right-data-bottom-half{
-  height: 50%;
   width: 100%;
-
 }
 .map-container,
 .giphy-container {
@@ -163,6 +161,7 @@ body{
 /* End http://www.cursors-4u.com */
 
 .article-title{
+  margin-top: 2vh;
   font-size: 3vmin;
   font-weight: bolder;
   color: yellow;

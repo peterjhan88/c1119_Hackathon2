@@ -7,9 +7,12 @@ body{
 }
 
 .space-header,
+.subheader,
+.subheader-title,
 .container,
 .upcoming-launch,
 .launch-list,
+.upcoming-launch-title,
 .right-column,
 .small-container,
 .mission-info,
@@ -29,30 +32,42 @@ body{
 }
 .space-header{
   height: 15vh;
-  background-image: url(./images/e5bd23574cee3222e088a5de04c28eaf.jpg);
+  background-image: url(./images/spacex-title.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 45%;
 }
+.subheader{
+  height: 10vh;
+}
+.subheader-title{
+  width: 33%;
+  justify-content: center;
+  align-items: center;
+  color: yellow;
+  font-size: 6vmin;
+}
 .container {
-  height: 85vh;
+  height: 75vh;
+
 }
 .left-column {
-  overflow-y: scroll;
-  scrollbar-width: 1px;
   width: 30%;
 }
 .upcoming-launch {
   flex-direction: column;
+  height: 90%;
   width: 100%;
+  overflow-y: scroll;
 }
 .launch-list{
   width: 90%;
   height: 50px;
   margin: 10px;
-  padding-left: 4px;
+  padding-left: 8px;
+  justify-content: center;
   align-items: center;
-  font-size: 3.5vmin;
+  font-size: 2.8vmin;
   color: white;
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   font-family: 'Calistoga', cursive, 'Krub', sans-serif;
@@ -61,7 +76,6 @@ body{
 .launch-list:active {
   -webkit-transform: scale(1.08, 1.08);
   transform: scale(1.08, 1.08);
-  text-decoration: underline;
 
 
 }
@@ -88,13 +102,22 @@ body{
 .mission-info {
   width: 100%;
   height: 50%;
+  flex-direction: column;
 }
-.left-data, .right-data{
+.left-data{
   height: 50%;
   width: 100%;
   font-family: 'Krub', sans-serif,'Calistoga', cursive;
 }
+.details{
+  height: 50%;
+  width: 100%;
+  font-family: 'Krub', sans-serif,'Calistoga', cursive;
+  overflow-y: scroll;
+}
 .right-data{
+  height: 100%;
+  width:100%;
   overflow-y: scroll;
 }
 .right-data::-webkit-scrollbar{
@@ -110,15 +133,9 @@ body{
   font-size: 2.5vmin;
   font-family: 'Calistoga', cursive, 'Krub', sans-serif;
 }
-.right-data-top-quarter{
-  height: 25%;
-  width: 100%;
 
-}
 .right-data-bottom-half{
-  height: 50%;
   width: 100%;
-
 }
 .map-container,
 .giphy-container {
@@ -140,6 +157,7 @@ body{
 /* End http://www.cursors-4u.com */
 
 .article-title{
+  margin-top: 2vh;
   font-size: 3vmin;
   font-weight: bolder;
   color: yellow;
